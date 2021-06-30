@@ -1,2 +1,7 @@
-package com.bookingApp.bookingApp.repository;public interface SeatRepository {
+package com.bookingApp.bookingApp.repository;
+
+import com.bookingApp.bookingApp.model.Seat;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SeatRepository extends JpaRepository<Seat,Long> {
 }

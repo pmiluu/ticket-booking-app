@@ -1,2 +1,7 @@
-package com.bookingApp.bookingApp.repository;public interface MovieRepository {
+package com.bookingApp.bookingApp.repository;
+
+import com.bookingApp.bookingApp.model.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MovieRepository extends JpaRepository<Movie,Long> {
 }

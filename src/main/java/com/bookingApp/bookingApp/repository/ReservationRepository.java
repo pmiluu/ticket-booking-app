@@ -1,2 +1,7 @@
-package com.bookingApp.bookingApp.repository;public interface ReservationRepository {
+package com.bookingApp.bookingApp.repository;
+
+import com.bookingApp.bookingApp.model.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReservationRepository extends JpaRepository<Reservation,Long> {
 }
