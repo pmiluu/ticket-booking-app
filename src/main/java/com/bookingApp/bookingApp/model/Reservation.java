@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@Data
 public class Reservation {
     @Id
     @GeneratedValue
@@ -31,8 +34,9 @@ public class Reservation {
     private double totalCost;
 
     @NotNull
-    private LocalDate expirationDate;
+    private LocalDateTime expirationDate;
 
     @OneToMany(mappedBy = "reservation")
     private List<Ticket> tickets;
+
 }

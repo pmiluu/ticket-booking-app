@@ -1,8 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Data
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +21,8 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie")
     private List<Screening> screenings;
+
+    public Movie(String title){
+        this.title = title;
+    }
 }

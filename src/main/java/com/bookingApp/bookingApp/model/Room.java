@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Data
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +24,8 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     private List<Seat> seats;
+
+    public Room(int roomNumber){
+        this.roomNumber = roomNumber;
+    }
 }
