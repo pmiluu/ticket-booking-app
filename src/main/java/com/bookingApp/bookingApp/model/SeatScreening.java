@@ -17,13 +17,13 @@ public class SeatScreening {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "seatScreening_id")
+    @JoinColumn(name = "screening_id")
     private Screening screening;
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
-    @OneToMany(mappedBy = "ticket")
+    @OneToMany(mappedBy = "seatScreening")
     private List<Ticket> tickets;
 }
