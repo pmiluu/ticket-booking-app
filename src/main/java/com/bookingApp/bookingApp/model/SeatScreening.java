@@ -1,5 +1,7 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,14 +20,17 @@ public class SeatScreening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "screening_id")
     private Screening screening;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "seatScreening")
     private Ticket ticket;
 

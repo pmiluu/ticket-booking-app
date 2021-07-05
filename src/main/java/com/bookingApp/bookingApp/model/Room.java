@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Room {
     @NotNull
     private int roomNumber;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "room")
     private List<Seat> seats;
 

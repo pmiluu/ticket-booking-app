@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,12 @@ public class Ticket {
     @NotNull
     private double price;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "seatScreening_id")
     private SeatScreening seatScreening;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;

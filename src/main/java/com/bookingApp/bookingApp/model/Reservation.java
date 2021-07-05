@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public class Reservation {
     @NotNull
     private LocalDateTime expirationDate;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "reservation")
     private List<Ticket> tickets;
 

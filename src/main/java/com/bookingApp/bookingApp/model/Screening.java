@@ -1,5 +1,7 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +26,12 @@ public class Screening {
     @NotNull
     private LocalDateTime screeningDate;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "screening")
     private List<SeatScreening> seatScreenings;
 
