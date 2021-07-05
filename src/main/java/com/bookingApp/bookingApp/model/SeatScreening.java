@@ -26,8 +26,8 @@ public class SeatScreening {
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
-    @OneToMany(mappedBy = "seatScreening")
-    private List<Ticket> tickets;
+    @OneToOne(mappedBy = "seatScreening")
+    private Ticket ticket;
 
     public SeatScreening(Screening screening, Seat seat){
         this.screening = screening;

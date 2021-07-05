@@ -21,7 +21,7 @@ public class Ticket {
     @NotNull
     private double price;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "seatScreening_id")
     private SeatScreening seatScreening;
 
