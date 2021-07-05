@@ -1,6 +1,7 @@
 package com.bookingApp.bookingApp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +11,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class Ticket {
@@ -22,13 +21,13 @@ public class Ticket {
     @NotNull
     private double price;
 
-    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "seatScreening_id")
+    @JsonIgnoreProperties("tickets")
     private SeatScreening seatScreening;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "reservation_id")
+    @JsonIgnoreProperties("tickets")
     private Reservation reservation;
 }

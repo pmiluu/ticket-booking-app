@@ -1,6 +1,7 @@
 package com.bookingApp.bookingApp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -11,8 +12,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class SeatScreening {
@@ -20,18 +19,18 @@ public class SeatScreening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "screening_id")
+    @JsonIgnoreProperties("seatScreenings")
     private Screening screening;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "seat_id")
+    @JsonIgnoreProperties("seatScreenings")
     private Seat seat;
 
-    @JsonManagedReference
     @OneToOne(mappedBy = "seatScreening")
+    @JsonIgnoreProperties("seatScreenings")
     private Ticket ticket;
 
     public SeatScreening(Screening screening, Seat seat){

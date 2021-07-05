@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -28,6 +29,7 @@ public class LoadDatabase {
         movies.add(new Movie("The Green Mile"));
         movies.add(new Movie("Forrest Gump"));
         movies.add(new Movie("The Shawshank Redemption"));
+        movies.add(new Movie("Lion King"));
 
         // screenings
 

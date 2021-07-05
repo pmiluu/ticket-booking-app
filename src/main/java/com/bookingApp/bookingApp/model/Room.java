@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -11,8 +12,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class Room {
@@ -23,8 +22,8 @@ public class Room {
     @NotNull
     private int roomNumber;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "room")
+    @JsonIgnoreProperties("room")
     private List<Seat> seats;
 
     public Room(int roomNumber){

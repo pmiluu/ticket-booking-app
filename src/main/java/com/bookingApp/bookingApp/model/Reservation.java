@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -16,8 +17,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class Reservation {
@@ -37,8 +36,8 @@ public class Reservation {
     @NotNull
     private LocalDateTime expirationDate;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "reservation")
+    @JsonIgnoreProperties("reservation")
     private List<Ticket> tickets;
 
 }

@@ -1,6 +1,7 @@
 package com.bookingApp.bookingApp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -12,8 +13,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class Seat {
@@ -27,13 +26,13 @@ public class Seat {
     @NotNull
     private boolean reserved;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "room_id")
+    @JsonIgnoreProperties("seats")
     private Room room;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "seat")
+    @JsonIgnoreProperties("seat")
     private List<SeatScreening> seatScreenings;
 
     public Seat(int seatNumber,boolean reserved, Room room){

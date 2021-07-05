@@ -1,5 +1,6 @@
 package com.bookingApp.bookingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -8,8 +9,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Data
 public class Movie {
@@ -20,8 +19,8 @@ public class Movie {
     @NotNull
     private String title;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "movie")
+    @JsonIgnoreProperties("movie")
     private List<Screening> screenings;
 
     public Movie(String title){
