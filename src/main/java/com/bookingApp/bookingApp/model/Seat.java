@@ -23,9 +23,6 @@ public class Seat {
     @NotNull
     private int seatNumber;
 
-    @NotNull
-    private boolean reserved;
-
     @ManyToOne
     @JoinColumn(name = "room_id")
     @JsonIgnoreProperties("seats")
@@ -35,9 +32,8 @@ public class Seat {
     @JsonIgnoreProperties("seat")
     private List<SeatScreening> seatScreenings;
 
-    public Seat(int seatNumber,boolean reserved, Room room){
+    public Seat(int seatNumber, Room room){
         this.seatNumber = seatNumber;
-        this.reserved = reserved;
         this.room = room;
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,9 @@ public class SeatScreening {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    private boolean reserved;
 
     @ManyToOne
     @JoinColumn(name = "screening_id")
@@ -33,8 +37,9 @@ public class SeatScreening {
     @JsonIgnoreProperties("seatScreenings")
     private Ticket ticket;
 
-    public SeatScreening(Screening screening, Seat seat){
+    public SeatScreening(Screening screening,boolean reserved, Seat seat){
         this.screening = screening;
+        this.reserved = reserved;
         this.seat = seat;
     }
 }
