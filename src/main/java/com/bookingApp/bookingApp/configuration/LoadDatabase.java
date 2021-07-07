@@ -57,7 +57,7 @@ public class LoadDatabase {
         for(int i=0;i<rooms.size();i++){
             List<Seat> seatsTmp = new ArrayList<>();
             for(int j=0;j<10;j++){
-                seatsTmp.add(new Seat(j+1,false,rooms.get(i)));
+                seatsTmp.add(new Seat(j+1,rooms.get(i)));
             }
             seatsTmp.forEach(seat -> seats.add(seat));
             rooms.get(i).setSeats(seatsTmp);
@@ -66,19 +66,19 @@ public class LoadDatabase {
         // seatScreening
         List<SeatScreening> seatScreenings = new ArrayList<>();
         for (Seat seat:rooms.get(0).getSeats()) {
-            seatScreenings.add(new SeatScreening(screenings.get(0),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(1),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(6),seat));
+            seatScreenings.add(new SeatScreening(screenings.get(0),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(1),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(6),false,seat));
         }
         for (Seat seat:rooms.get(1).getSeats()) {
-            seatScreenings.add(new SeatScreening(screenings.get(2),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(3),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(7),seat));
+            seatScreenings.add(new SeatScreening(screenings.get(2),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(3),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(7),false,seat));
         }
         for (Seat seat:rooms.get(2).getSeats()) {
-            seatScreenings.add(new SeatScreening(screenings.get(4),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(5),seat));
-            seatScreenings.add(new SeatScreening(screenings.get(8),seat));
+            seatScreenings.add(new SeatScreening(screenings.get(4),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(5),false,seat));
+            seatScreenings.add(new SeatScreening(screenings.get(8),false,seat));
         }
 
         return args -> {
