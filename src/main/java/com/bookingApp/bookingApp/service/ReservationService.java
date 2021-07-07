@@ -21,6 +21,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -51,6 +53,17 @@ public class ReservationService implements IReservationService {
             screeningsDtos.add(s);
         });
 
+        Collections.sort(screeningsDtos, new Comparator<ScreeningsDto>() {
+            @Override
+            public int compare(ScreeningsDto o1, ScreeningsDto o2) {
+                if(o1.getTitle().compareTo(o2.getTitle())==0){
+                    return o1.getDate().compareTo(o2.getDate());
+                }else {
+                    return o1.getTitle().compareTo(o2.getTitle());
+                }
+            }
+        });
+
         return screeningsDtos;
     }
     @Override
@@ -67,6 +80,16 @@ public class ReservationService implements IReservationService {
             screeningsDtos.add(s);
         });
 
+        Collections.sort(screeningsDtos, new Comparator<ScreeningsDto>() {
+            @Override
+            public int compare(ScreeningsDto o1, ScreeningsDto o2) {
+                if(o1.getTitle().compareTo(o2.getTitle())==0){
+                    return o1.getDate().compareTo(o2.getDate());
+                }else {
+                    return o1.getTitle().compareTo(o2.getTitle());
+                }
+            }
+        });
         return screeningsDtos;
     }
 
