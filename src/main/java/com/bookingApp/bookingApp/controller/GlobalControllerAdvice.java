@@ -3,6 +3,7 @@ package com.bookingApp.bookingApp.controller;
 import com.bookingApp.bookingApp.error.ScreeningNotFoundException;
 import com.bookingApp.bookingApp.error.SeatAlreadyReserved;
 import com.bookingApp.bookingApp.error.SeatNotFoundException;
+import com.bookingApp.bookingApp.error.TooLateToReserveException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,6 +30,13 @@ public class GlobalControllerAdvice {
     @ExceptionHandler(SeatNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     String seatNotFoundHandler(SeatNotFoundException ex){
+        return ex.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(TooLateToReserveException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String tooLateToReserveHandler(TooLateToReserveException ex){
         return ex.getMessage();
     }
 

@@ -34,7 +34,7 @@ public class LoadDatabase {
         // screenings
 
         List<Screening> screenings = new ArrayList<>();
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,12,00),movies.get(0)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,8,12,00),movies.get(0)));
         screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,16,00),movies.get(1)));
         screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,13,30),movies.get(1)));
         screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,18,00),movies.get(2)));

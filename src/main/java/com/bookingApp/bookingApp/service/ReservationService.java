@@ -4,6 +4,7 @@ import com.bookingApp.bookingApp.DTOs.*;
 import com.bookingApp.bookingApp.error.ScreeningNotFoundException;
 import com.bookingApp.bookingApp.error.SeatAlreadyReserved;
 import com.bookingApp.bookingApp.error.SeatNotFoundException;
+import com.bookingApp.bookingApp.error.TooLateToReserveException;
 import com.bookingApp.bookingApp.model.Reservation;
 import com.bookingApp.bookingApp.model.Screening;
 import com.bookingApp.bookingApp.model.SeatScreening;
@@ -16,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,6 +102,11 @@ public class ReservationService implements IReservationService {
         double totalCost = 0;
         LocalDateTime expDate = null;
 
+        Duration duration = Duration.between(LocalDateTime.now(),screening.getScreeningDate());
+        if(duration.isNegative() || duration.getSeconds()*60 < 15){
+            throw new TooLateToReserveException(screeningId);
+        }
+
         Reservation r = new Reservation();
         r.setName(reservation.getName());
         r.setSurname(reservation.getSurname());
@@ -135,7 +143,7 @@ public class ReservationService implements IReservationService {
             ticket.setSeatScreening(s);
             ticket.setReservation(r);
             ticketRepository.save(ticket);
-            expDate = s.getScreening().getScreeningDate().minusMinutes(30);
+            expDate = s.getScreening().getScreeningDate().minusMinutes(15);
 
 
         }
