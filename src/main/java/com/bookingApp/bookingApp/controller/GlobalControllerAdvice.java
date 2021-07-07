@@ -1,6 +1,8 @@
 package com.bookingApp.bookingApp.controller;
 
 import com.bookingApp.bookingApp.error.ScreeningNotFoundException;
+import com.bookingApp.bookingApp.error.SeatAlreadyReserved;
+import com.bookingApp.bookingApp.error.SeatNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,4 +17,19 @@ public class GlobalControllerAdvice {
     String screeningNotFoundHandler(ScreeningNotFoundException ex){
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(SeatAlreadyReserved.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String seatAlreadyReservedHandler(SeatAlreadyReserved ex){
+        return ex.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(SeatNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String seatNotFoundHandler(SeatNotFoundException ex){
+        return ex.getMessage();
+    }
+
 }

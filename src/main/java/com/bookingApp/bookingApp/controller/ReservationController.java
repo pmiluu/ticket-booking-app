@@ -1,5 +1,7 @@
 package com.bookingApp.bookingApp.controller;
 
+import com.bookingApp.bookingApp.DTOs.ReservationBackDto;
+import com.bookingApp.bookingApp.DTOs.ReservationDto;
 import com.bookingApp.bookingApp.DTOs.ScreeningInfoDto;
 import com.bookingApp.bookingApp.DTOs.ScreeningsDto;
 import com.bookingApp.bookingApp.service.IReservationService;
@@ -36,5 +38,10 @@ public class ReservationController {
     @GetMapping("/{id}")
     public ScreeningInfoDto one(@PathVariable Long id){
         return reservationService.findById(id);
+    }
+
+    @PostMapping("/{id}/reserve")
+    public ReservationBackDto reserve(@PathVariable Long id, @RequestBody ReservationDto reservation){
+        return reservationService.reserve(reservation,id);
     }
 }
