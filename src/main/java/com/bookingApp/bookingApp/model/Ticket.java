@@ -19,7 +19,8 @@ public class Ticket {
     private Long id;
 
     @NotNull
-    private double price;
+    @Enumerated(EnumType.STRING)
+    private TicketType ticketType;
 
     @OneToOne
     @JoinColumn(name = "seatScreening_id")
