@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class ReservationController {
 
     @PostMapping("/{id}/reserve")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReservationBackDto reserve(@PathVariable Long id, @RequestBody ReservationDto reservation){
+    public ReservationBackDto reserve(@PathVariable Long id, @Valid @RequestBody ReservationDto reservation){
         return reservationService.reserve(reservation,id);
     }
 }
