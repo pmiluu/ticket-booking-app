@@ -8,6 +8,7 @@ import com.bookingApp.bookingApp.service.IReservationService;
 import com.bookingApp.bookingApp.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class ReservationController {
     public ReservationController(ReservationService service){
         this.reservationService = service;
     }
+
     @GetMapping("/all")
     public List<ScreeningsDto> all(){
         return reservationService.findAll();
@@ -41,6 +43,7 @@ public class ReservationController {
     }
 
     @PostMapping("/{id}/reserve")
+    @ResponseStatus(HttpStatus.CREATED)
     public ReservationBackDto reserve(@PathVariable Long id, @RequestBody ReservationDto reservation){
         return reservationService.reserve(reservation,id);
     }
