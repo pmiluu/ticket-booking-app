@@ -34,15 +34,15 @@ public class LoadDatabase {
         // screenings
 
         List<Screening> screenings = new ArrayList<>();
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,8,12,00),movies.get(0)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,16,00),movies.get(1)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,13,30),movies.get(1)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,18,00),movies.get(2)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,11,00),movies.get(1)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,20,20,00),movies.get(0)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,21,12,00),movies.get(3)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,21,15,00),movies.get(3)));
-        screenings.add(new Screening(LocalDateTime.of(2021, Month.JUNE,21,19,00),movies.get(3)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,5,12,00),movies.get(0)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,6,16,00),movies.get(1)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,7,13,30),movies.get(1)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,14,18,00),movies.get(2)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,15,11,00),movies.get(1)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,20,20,00),movies.get(0)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,21,12,00),movies.get(3)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,22,15,00),movies.get(3)));
+        screenings.add(new Screening(LocalDateTime.of(2021, Month.JULY,23,19,00),movies.get(3)));
 
 
 
